@@ -15,12 +15,14 @@ import boto.ec2
 class VPC(StackNode):
     INPUTS = {'Tags': ['global:Tags'],
               'Region': ['global:Region'],
+              'AvailabilityZone': ['global:AvailabilityZone'],
               'StackType': ['global:StackType'],
               'NameSpace': ['global:NameSpace'],
               'IPAccess': ['global:IPAccess']}
 
     DEFAULTS = {
         'Tags': {},
+        'AvailabilityZone': None
     }
 
     ATTRIBUTES = {'NameSpace': 'NameSpace'}
@@ -65,7 +67,15 @@ class VPC(StackNode):
 
         region = self.get_input('Region')
         conn = boto.ec2.connect_to_region(region, profile_name=self.aws_profile)
-        zone = conn.get_all_zones()[0]
+        zone_name = self.get_input('AvailabilityZone')
+        if zone_name:
+            zones = conn.get_all_zones(filters={ 'zone-name' : zone_name })
+            if not zones:
+                raise Exception("Bad availability zone name: %s" % zone_name)
+        else:
+            zones = conn.get_all_zones()[0]
+
+        zone = zones[0]
 
         self.add_output(Output('AvailabilityZone', Value=zone.name))
 

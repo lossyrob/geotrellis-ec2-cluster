@@ -2,6 +2,14 @@
 mesos_follower: not mesos_leader
 accumulo_follower: not accumulo_leader
 
+
+spark_version: "1.5.0+cdh5.5.*"
+spark_cloudera_distribution: "cdh5.5"
+hdfs_version: "2.6.0+cdh5.5.*"
+hdfs_cloudera_distribution: "cdh5.5"
+zookeeper_version: "3.4.5+cdh5.5.*"
+zookeeper_cloudera_distribution: "cdh5.5"
+
 java_version: "7u80*"
 java_flavor: "oracle"
 java_oracle_accept_license_agreement: True
@@ -39,4 +47,4 @@ collectd_load_plugins:
 # Spark Settings
 spark_env_extras:
   MESOS_NATIVE_LIBRARY: "/usr/local/lib/libmesos.so"
-  SPARK_WORKER_CORES: "8"
+  SPARK_DIST_CLASSPATH: "$(hadoop classpath)"

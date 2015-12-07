@@ -106,6 +106,7 @@ class MesosLeader(utils.GTStackNode):
                         5050,   # Mesos
                         8080,   # Marathon
                         8081,   # Graphite Web
+                        8088,   # Application
                         8090,   # Grafana
                         9200,   # ElasticSearch
                         50070,  # HDFS

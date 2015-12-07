@@ -7,6 +7,16 @@
     - /usr/lib/hadoop-mapreduce/joda-time-1.6.jar
     - /usr/lib/parquet/lib/joda-time-1.6.jar
 
+- name: Get rid of aws-java-sdk
+  file: path={{ item }} state=absent
+  with_items:
+    - /usr/lib/hadoop/client/aws-java-sdk-1.7.4.jar
+    - /usr/lib/hadoop/client/aws-java-sdk.jar
+    - /usr/lib/hadoop/client-0.20/aws-java-sdk-1.7.4.jar
+    - /usr/lib/hadoop/client-0.20/aws-java-sdk.jar
+    - /usr/lib/hadoop/lib/aws-java-sdk-1.7.4.jar
+    - /usr/lib/hadoop/lib/aws-java-sdk.jar
+
 - name: Symlinks jets3t 0.9.0 into /usr/lib/hadoop/client
   file: src=/usr/lib/hadoop/lib/jets3t-0.9.0.jar
         dest=/usr/lib/hadoop/client/jets3t-0.9.0.jar
