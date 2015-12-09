@@ -1,5 +1,5 @@
 ---
-cluster_domain: "ksat-demo.internal"
+cluster_domain: "geotrelli-spark.internal"
 
 ntp_servers:
   - 0.amazon.pool.ntp.org
