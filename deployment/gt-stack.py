@@ -26,7 +26,7 @@ def create_ami(machine_type, aws_profile, gt_config, **kwargs):
 
 def main():
     common_parser = argparse.ArgumentParser(add_help=False)
-    common_parser.add_argument('--aws-profile', default='default',
+    common_parser.add_argument('--aws-profile', default='climate',
                                help='AWS profile to use for launching stack and other resources')
     common_parser.add_argument('--gt-config-path', help='Path to GeoTrellis stack config',
                                default=os.path.join(current_file_dir, 'geotrellis-cluster.config'))

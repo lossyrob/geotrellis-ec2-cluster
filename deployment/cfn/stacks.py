@@ -1,4 +1,3 @@
-
 from majorkirby import GlobalConfigNode
 
 from vpc import VPC

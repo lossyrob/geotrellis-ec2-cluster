@@ -1,5 +1,5 @@
 ---
-cluster_domain: "geotrelli-spark.internal"
+cluster_domain: "geotrellis-spark.internal"
 
 ntp_servers:
   - 0.amazon.pool.ntp.org

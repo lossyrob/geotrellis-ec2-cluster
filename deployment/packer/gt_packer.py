@@ -57,7 +57,7 @@ def run_packer(machine_type, aws_profile, region, stack_type, cluster_domain):
       stack_type (str): type of stack this machine is for (e.g. accumulo geotrellis cluster)
       cluster_domain (str): domain for the cluster, which is used in the cloud config template
     """
-    
+
     # Render the packer leader cloud-config template
     template = Template(open("cloud-config/packer-%s-leader.template" % stack_type).read())
     rendered = template.render(cluster_domain=cluster_domain)
